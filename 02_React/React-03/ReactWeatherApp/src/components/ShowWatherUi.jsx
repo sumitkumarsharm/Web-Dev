@@ -107,15 +107,21 @@ const ShowWatherUi = ({ isDark }) => {
             className="w-20 sm:w-24 md:w-28 h-auto mx-auto object-contain mb-2"
           />
 
-          <h2 className={`text-2xl sm:text-3xl font-bold ${baseText}`}>
+          <h2
+            className={`text-2xl sm:text-3xl font-bold text-white ${baseText}`}
+          >
             {weather.name}, {weather.sys?.country}
           </h2>
 
-          <p className={`text-base sm:text-lg capitalize ${fadedText}`}>
+          <p
+            className={`text-base sm:text-lg capitalize text-white ${fadedText}`}
+          >
             {weather.weather?.[0]?.description || "N/A"}
           </p>
 
-          <h1 className={`text-4xl sm:text-5xl font-bold mt-4 ${baseText}`}>
+          <h1
+            className={`text-4xl sm:text-5xl font-bold mt-4 text-white ${baseText}`}
+          >
             {Math.round(weather.main?.temp - 273.15)}
             <sup>°</sup>C
           </h1>
@@ -131,8 +137,8 @@ const ShowWatherUi = ({ isDark }) => {
                 key={item.label}
                 className={`px-4 py-3 flex-1 rounded-lg backdrop-blur-sm w-full sm:w-auto ${boxBg}`}
               >
-                <p className="capitalize text-sm">{item.label}</p>
-                <p className="text-sm font-semibold">{item.value}</p>
+                <p className="capitalize text-white text-sm">{item.label}</p>
+                <p className="text-sm text-white font-semibold">{item.value}</p>
               </div>
             ))}
           </div>
