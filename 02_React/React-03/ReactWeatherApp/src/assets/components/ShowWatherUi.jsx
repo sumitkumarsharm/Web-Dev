@@ -33,11 +33,9 @@ const ShowWatherUi = ({ isDark }) => {
         setLoading(false);
       }
     };
-
+    setInputCity = "";
     fetchWeather();
   }, [city, apiKey]);
-
-  console.log(weather);
 
   const handleSearch = () => {
     if (inputCity.trim()) {
@@ -104,9 +102,9 @@ const ShowWatherUi = ({ isDark }) => {
       {weather && !loading && (
         <div className="mt-6 text-center">
           <img
-            src={` https://openweathermap.org/img/wn/${weather.weather?.[0]?.icon}@2x.png`}
+            src={Summer}
             alt="weather icon"
-            className="w-20 sm:w-24 md:w-28 h-auto mx-auto object-contain"
+            className="w-20 sm:w-24 md:w-28 h-auto mx-auto object-contain mb-2"
           />
 
           <h2

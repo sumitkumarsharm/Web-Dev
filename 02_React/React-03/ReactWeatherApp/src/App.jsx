@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ShowWatherUi from "./components/ShowWatherUi";
+import ShowWatherUi from "./components/ShowWatherUi.jsx";
 import { Moon, Sun } from "lucide-react";
 const App = () => {
   const [isDark, setIsDark] = useState(false);
