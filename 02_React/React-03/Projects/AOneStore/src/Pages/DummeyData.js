@@ -92,7 +92,7 @@ export const products = [
     url: "/pd/10000144/fresho-ladies-finger-500-g",
   },
   {
-    id: 7,
+    id: 8,
     name: "Ladies Finger/Bhindi",
     brand: "fresho!",
     quantity: "500 g",
