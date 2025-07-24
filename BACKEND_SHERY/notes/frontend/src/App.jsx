@@ -45,18 +45,20 @@ const App = () => {
       <div className="max-w-3xl mx-auto space-y-10">
 
 
-        <div className="flex justify-end">
-          <button
-            onClick={() => setDarkMode(!darkMode)}
-            className={`mb-4 px-2 py-2 rounded-full ${bgCard} ${textMuted} hover:cursor-pointer shadow transition-all duration-300`}
-          >
-            {darkMode ? <LuSunMoon /> : <IoMdMoon />}
-          </button>
-        </div>
+
 
 
         <div className={`p-6 rounded-2xl shadow-lg border ${bgCard}`}>
-          <h1 className="text-3xl font-bold text-center mb-6">📝 Notes App</h1>
+          <div className="text-3xl font-bold text-center mb-6 flex  justify-center gap-5 relative">📝 Notes App
+            <div className="flex justify-end absolute -top-3 right-1 ">
+              <button
+                onClick={() => setDarkMode(!darkMode)}
+                className={`mb-4 px-2 py-2 rounded-full ${bgCard} ${textMuted} hover:cursor-pointer shadow transition-all duration-300`}
+              >
+                {darkMode ? <LuSunMoon /> : <IoMdMoon />}
+              </button>
+            </div>
+          </div>
 
           <div className="flex flex-col md:flex-row gap-4">
             <input
@@ -101,9 +103,9 @@ const App = () => {
                   <p className="text-sm">{note.content}</p>
                 </div>
                 <button
+                  title="Delete note"
                   onClick={() => deleteNote(note._id)}
                   className="text-red-600 hover:text-red-800 mt-2 md:mt-0 md:ml-4 cursor-pointer"
-                  title="Delete note"
                 >
                   <MdDeleteOutline size={24} />
                 </button>
