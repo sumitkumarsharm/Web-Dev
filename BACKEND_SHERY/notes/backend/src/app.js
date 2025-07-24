@@ -1,13 +1,10 @@
 const express = require('express');
 const cors = require('cors');
-const mongoose = require('mongoose');
 const noteModel = require('./models/node.model');
 
 const app = express(); 
-app.use(express.urlencoded({ extended: true }));
 app.use(cors())
 app.use(express.json()); 
-
 
 
 // posting notes to mongodb
