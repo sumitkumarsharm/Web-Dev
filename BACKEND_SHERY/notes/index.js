@@ -1,5 +1,5 @@
 const app = require('./src/app');
-const connectDB = require('./src/db/connectDB');
+const connectDB = require('./src/db/connectsDB');
 
 // // notes 
 // const notes = []
