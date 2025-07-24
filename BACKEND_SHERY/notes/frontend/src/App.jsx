@@ -3,6 +3,8 @@ import api from './api/api';
 import { MdDeleteOutline } from 'react-icons/md';
 import { LuSunMoon } from "react-icons/lu";
 import { IoMdMoon } from "react-icons/io";
+import { toast } from 'react-toastify';
+
 
 
 
@@ -24,11 +26,14 @@ const App = () => {
     await api.post('/', form);
     setForm({ title: '', content: '' });
     fetchNotes();
+    toast.success('Note added successfully!');
   };
 
   const deleteNote = async (id) => {
     await api.delete(`/${id}`);
     fetchNotes();
+    toast.error('Note deleted successfully!');
+
   };
 
   useEffect(() => {
