@@ -1,8 +1,14 @@
 const express = require('express');
+const cors = require('cors');
+const mongoose = require('mongoose');
 const noteModel = require('./models/node.model');
 
 const app = express(); 
+app.use(express.urlencoded({ extended: true }));
+app.use(cors())
 app.use(express.json()); 
+
+
 
 // posting notes to mongodb
 app.post('/notes', async (req, res) => {
@@ -16,10 +22,28 @@ app.post('/notes', async (req, res) => {
 app.get('/notes', async (req, res) => {
     try {   
         const notes = await noteModel.find({}).sort({ createdAt: -1 });
-        res.status(200).json(notes);
+        if(!notes || notes.length === 0) {
+            return res.status(404).json({ message: 'Notes is Empty!' });
+        }else{
+              res.status(200).json({
+            message: 'Notes get successfully'
+            , notes: notes
+        });
+        } 
     }
     catch (err) {
         res.status(500).json({ error: 'Failed to fetch notes' });
+    }
+});
+
+// get only one note from db
+app.get('/notes/:id', async (req, res) => {
+    const { id } = req.params;
+    const note = await noteModel.findById(id);
+    if (!note) {    
+        return res.status(404).json({ message: 'Note not found' });
+    }else{
+        res.status(200).json({ message: 'Single Note get successfully', note });
     }
 });
 
