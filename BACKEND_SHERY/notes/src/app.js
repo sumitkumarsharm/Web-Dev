@@ -4,6 +4,7 @@ const noteModel = require('./models/node.model');
 const app = express(); 
 app.use(express.json()); 
 
+// posting notes to mongodb
 app.post('/notes', async (req, res) => {
         const {title,content} = req.body;      
       await noteModel.create({title,content})
