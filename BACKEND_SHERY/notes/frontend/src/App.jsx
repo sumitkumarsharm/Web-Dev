@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import api from './api/api';
 import { MdDeleteOutline } from 'react-icons/md';
 import { LuSunMoon } from "react-icons/lu";
+import { MdEdit } from "react-icons/md";
 import { IoMdMoon } from "react-icons/io";
 import { toast } from 'react-toastify';
 
@@ -107,13 +108,21 @@ const App = () => {
                   <h3 className="font-bold text-lg mb-1">{note.title}</h3>
                   <p className="text-sm">{note.content}</p>
                 </div>
-                <button
-                  title="Delete note"
-                  onClick={() => deleteNote(note._id)}
-                  className="text-red-600 hover:text-red-800 mt-2 md:mt-0 md:ml-4 cursor-pointer"
-                >
-                  <MdDeleteOutline size={24} />
-                </button>
+                <div className='flex items-center mt-2 md:mt-0 gap-2'>
+                  <button
+                    title="Delete note"
+                    onClick={() => deleteNote(note._id)}
+                    className="text-red-600 hover:text-red-800 mt-2 md:mt-0 md:ml-4 cursor-pointer"
+                  >
+                    <MdDeleteOutline size={24} />
+                  </button>
+                  <button
+                    title='edit note'
+                    className='cursor-pointer'
+                  >
+                    <MdEdit size={24} />
+                  </button>
+                </div>
               </li>
             ))}
           </ul>

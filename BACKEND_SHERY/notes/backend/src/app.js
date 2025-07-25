@@ -1,9 +1,15 @@
 const express = require('express');
 const cors = require('cors');
+const dotenv = require('dotenv');
 const noteModel = require('./models/node.model');
 
+dotenv.config();
 const app = express(); 
-app.use(cors())
+app.use(cors({ 
+    origin: 'http://localhost:5173', //yaha hame btana padta hai akah se data de rhe hai
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true }
+)) // cors error par or kaam krna hai
 app.use(express.json()); 
 
 
