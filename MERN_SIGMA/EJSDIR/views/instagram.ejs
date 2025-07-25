@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJS || Instagram</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #4a90e2;
+        }
+
+        .user-data {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .user-data p {
+            margin: 5px 0;
+        }
+
+        ul {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+            flex-wrap: wrap;
+            justify-content: center;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #fff;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        li img {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        li p {
+            margin: 0;
+            color: #555;
+        }
+
+        li:hover {
+            background-color: #f9f9f9;
+            cursor: pointer;
+        }
+
+        li:hover img {
+            transform: scale(1.05);
+            transition: transform 7s;
+
+        }
+
+        li img:hover {
+            transform: scale(1.1);
+            transition: transform 0.4s;
+        }
+
+        .post {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .post-details {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            color: #43e13e;
+            font-size: 14px;
+        }
+
+        .post-details p {
+            margin: 0;
+            color: #990303;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <h2>
+            Username : <%= userData.name %>
+        </h2>
+        <div class="user-data">
+            <p>follow : <%= userData.followers %>
+            </p>
+            <p>Message : <%= userData.following %>
+            </p>
+        </div>
+    </div>
+    <div>
+        <h2 class="post">Posts</h2>
+        <ul>
+            <% userData.posts.forEach(post=> { %>
+                <li>
+                    <img src="<%= post.image %>" alt="Post Image"
+                        style="width: 200px; height: 200px; border-radius: 5px;">
+                    <div class="post-details">
+                        <p>Likes: <%= post.likes %>
+                        </p>
+                        <p>Comments: <%= post.comments %>
+                        </p>
+                    </div>
+                    <p>
+                        <%= post.caption %>
+                    </p>
+                </li>
+                <% }) %>
+
+
+</body>
+
+</html>
