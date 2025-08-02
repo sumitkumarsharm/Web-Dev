@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Create a New Quote</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f7f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .quote-form-wrapper {
+            background: #232222;
+            padding: 32px 40px;
+            width: 100%;
+            max-width: 520px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            color: #fff;
+        }
+
+        .form-title {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 24px;
+            color: #fff;
+        }
+
+        .quote-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+
+        .form-field label {
+            font-size: 14px;
+            color: #fff;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        textarea,
+        input[type="text"] {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+            transition: border 0.2s ease;
+        }
+
+        .form-field input {
+            background-color: #232222;
+            color: #faf7f7;
+        }
+
+
+        textarea:focus,
+        input:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+            background: #312f2f;
+            color: #faf7f7;
+        }
+
+        .submit-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="quote-form-wrapper">
+        <h1 class="form-title">📝 Create a New Quote</h1>
+
+        <form action="/posts" method="POST" class="quote-form">
+            <div class="form-field">
+                <label for="text">Quote Text</label>
+                <textarea id="text" name="text" placeholder="Write your quote here..." required></textarea>
+            </div>
+
+            <div class="form-field">
+                <label for="author">Author Name</label>
+                <input type="text" id="author" name="author" placeholder="e.g., Albert Einstein" required>
+            </div>
+
+            <button type="submit" class="submit-btn">➕ Add Quote</button>
+        </form>
+    </div>
+
+</body>
+
+</html>

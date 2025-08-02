@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Page</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: #fff;
+            padding: 2.5rem 2rem;
+            border-radius: 14px;
+            box-shadow: 0 4px 24px rgba(33, 37, 41, 0.06), 0 1.5px 9px rgba(33, 37, 41, .07);
+            max-width: 420px;
+            width: 100%;
+        }
+
+        h1 {
+            margin-top: 0;
+            font-size: 2rem;
+            color: #204080;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        p {
+            margin: 1.2rem 0;
+            font-size: 1.15rem;
+            color: #222;
+        }
+
+        strong {
+            color: #204080;
+        }
+
+        #close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #204080;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <button id="close-btn" onclick="window.location.href = '/posts';">X</button>
+        <h1>Show Page</h1>
+        <p>Here is the content of the show page.</p>
+        <p><strong>Post ID:</strong>
+            <%= post.id %>
+        </p>
+        <p><strong>Post Text:</strong>
+            <%= post.text %>
+        </p>
+        <p><strong>Post Author:</strong>
+            <%= post.author %>
+        </p>
+    </div>
+</body>
+
+</html>

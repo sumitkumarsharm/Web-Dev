@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Posts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #222;
+            padding: 20px;
+        }
+
+        .top-bar {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .create-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .create-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .post-card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .author {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .author span {
+            font-weight: bold;
+            color: #222;
+        }
+
+        .post-text {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .read-btn {
+            background: none;
+            border: none;
+            color: #007bff;
+            cursor: pointer;
+            padding: 0;
+            font-size: 14px;
+        }
+
+        .edit-form {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .edit-form textarea {
+            width: 100%;
+            height: 80px;
+            padding: 6px;
+            font-size: 14px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .edit-form button {
+            margin-top: 6px;
+            background-color: #28a745;
+            color: white;
+            padding: 6px 12px;
+            border: none;
+            font-size: 14px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .btn-group a {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 14px;
+
+        }
+
+        .edit-btn,
+        .delete-btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .edit-btn {
+            background-color: #ffc107;
+            color: white;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-bar">
+        <a href="/posts/new" class="create-btn">➕ Create New Post</a>
+    </div>
+
+    <div class="post-container">
+        <% posts.forEach(post=> { %>
+            <div class="post-card" id="post-<%= post.id %>">
+                <div class="author">Author: <span>
+                        <%= post.author %>
+                    </span></div>
+
+                <div id="text-<%= post.id %>" class="post-text">
+                    <%= post.text.length> 100 ? post.text.slice(0, 100) + '...' : post.text %>
+                </div>
+
+                <% if (post.text.length> 100) { %>
+                    <button class="read-btn">Read More</button>
+                    <% } %>
+
+                        <form id="edit-form-<%= post.id %>" action="/update/<%= post.id %>" method="POST"
+                            class="edit-form">
+                            <textarea name="text"><%= post.text %></textarea>
+                            <button type="submit">Save</button>
+                        </form>
+
+                        <div class="btn-group">
+                            <button class="edit-btn">Edit</button>
+                            <form action="/delete/<%= post.id %>" method="POST"
+                                onsubmit="return confirm('Delete this post?')">
+                                <button type="submit" class="delete-btn">Delete</button>
+                            </form>
+                            <a href="/posts/<%= post.id %>">View</a>
+                        </div>
+            </div>
+            <% }) %>
+    </div>
+
+</body>
+
+</html>
