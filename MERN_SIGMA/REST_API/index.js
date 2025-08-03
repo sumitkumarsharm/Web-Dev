@@ -94,6 +94,19 @@ app.get('/posts/:id/edit', (req, res) => {
     }
 });
 
+// delete by id
+app.delete('/posts/:id', (req, res) => {
+    const postId = req.params.id;
+    const postIndex = posts.findIndex(p => p.id === postId);
+
+    if (postIndex !== -1) {
+        posts.splice(postIndex, 1);
+        res.redirect('/posts');
+    } else {
+        res.status(404).send('Post not found');
+    }
+});
+
 
 
 app.listen(PORT, () => {
