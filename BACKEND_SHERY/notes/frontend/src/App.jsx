@@ -37,6 +37,12 @@ const App = () => {
 
   };
 
+  const updateNotes = async (id) => {
+    await api.findUpdateById(id)
+  }
+
+
+
   useEffect(() => {
     fetchNotes();
   }, []);
@@ -49,10 +55,6 @@ const App = () => {
   return (
     <div className={`w-full min-h-screen ${bgMain} py-10 px-4 transition-all duration-300`}>
       <div className="max-w-3xl mx-auto space-y-10">
-
-
-
-
 
         <div className={`p-6 rounded-2xl shadow-lg border ${bgCard}`}>
           <div className="text-3xl font-bold text-center mb-6 flex  justify-center gap-5 relative">📝 Notes App
@@ -119,6 +121,7 @@ const App = () => {
                   <button
                     title='edit note'
                     className='cursor-pointer'
+                    onClick={() => updateNotes(note.id)}
                   >
                     <MdEdit size={24} />
                   </button>
